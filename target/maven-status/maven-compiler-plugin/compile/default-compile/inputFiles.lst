@@ -1,0 +1,14 @@
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/QuodDocumentVerificationApplication.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/controller/DocumentVerificationController.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/service/NotificationService.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/service/FraudDetectionService.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/dto/FingerprintBiometryRequest.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/model/VerificationResult.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/dto/VerificationResponse.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/service/BiometricVerificationService.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/exception/GlobalExceptionHandler.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/dto/FacialBiometryRequest.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/dto/DocumentAnalysisRequest.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/service/ImageValidationService.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/config/AppConfig.java
+/Users/lucas_souza/Faculdade-Projetos/quod-back-end-fiap/src/main/java/com/quod/biometric/repository/VerificationRepository.java

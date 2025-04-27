@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: biometric-verification
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/biometric_verification
+      auto-index-creation: true
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
+# Custom application properties
+notification:
+  service:
+    url: http://localhost:8090/fraud-notification # Simulated fraud notification system URL
+    success-url: http://localhost:8090/success-notification # Simulated success notification system URL
+
+# Image validation properties
+image:
+  validation:
+    max-size: 5242880 # 5MB
+    allowed-formats:
+      - "image/jpeg"
+      - "image/png"
+    min-resolution: 640x480
+
+---
+# Test profile configuration
+spring:
+  config:
+    activate:
+      on-profile: test
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/biometric_verification_test
+      auto-index-creation: true
+  mongodb:
+    embedded:
+      version: 4.0.21
