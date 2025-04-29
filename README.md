@@ -27,7 +27,9 @@ Aplicação Spring Boot para verificação biométrica facial, impressão digita
 
 ## Instalação e Execução
 
-### Passo 1: Configurar o MongoDB
+### Passo 1: Configurar e Iniciar o MongoDB
+
+> **⚠️ IMPORTANTE:** O MongoDB **DEVE** estar em execução antes de iniciar a aplicação Spring Boot!
 
 **Para MacOS:**
 
@@ -35,8 +37,8 @@ Aplicação Spring Boot para verificação biométrica facial, impressão digita
 # Para instalar o MongoDB (MacOS)
 brew tap mongodb/brew && brew install mongodb-community
 
-# Para iniciar o MongoDB
-brew services start mongodb/brew/mongodb-community
+# IMPORTANTE: Para iniciar o MongoDB - executar antes da aplicação Spring Boot
+mongod --config /opt/homebrew/etc/mongod.conf --fork
 
 # Verificar se o MongoDB está rodando
 ps aux | grep -v grep | grep mongod
@@ -78,18 +80,6 @@ Nota: Se você não instalou como serviço, pode iniciar o MongoDB manualmente:
 
 **Para MacOS/Linux:**
 
-**Opção 1: Usando o script de instalação**
-
-```bash
-# Dê permissão de execução ao script (se necessário)
-chmod +x install.sh
-
-# Execute o script
-./install.sh
-```
-
-**Opção 2: Usando comandos Maven diretamente**
-
 ```bash
 # Compilar o projeto
 ./mvnw clean install
@@ -109,6 +99,22 @@ mvnw.cmd spring-boot:run
 ```
 
 A aplicação estará disponível em `http://localhost:8080`.
+
+### Passo 4: Verificar se a aplicação está conectada ao MongoDB
+
+Ao iniciar a aplicação, você deve ver nos logs mensagens semelhantes a estas:
+
+```
+org.mongodb.driver.cluster: Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true...
+```
+
+Se você vir erros como:
+
+```
+No server chosen by WritableServerSelector from cluster description ClusterDescription{type=UNKNOWN, connectionMode=SINGLE, serverDescriptions=[ServerDescription{address=localhost:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused}}]}
+```
+
+Isso indica que o MongoDB não está em execução. Siga as instruções do Passo 1 para iniciar o MongoDB e reinicie a aplicação.
 
 ## API Endpoints
 
@@ -243,8 +249,11 @@ Para verificar os resultados armazenados no MongoDB:
 **MacOS/Linux:**
 
 ```bash
-# Conectar ao MongoDB e listar as coleções
-mongosh "mongodb://localhost:27017/biometric_verification" --eval "db.getCollectionNames()"
+# Listar bancos de dados
+mongosh --eval "show dbs"
+
+# Listar as coleções
+mongosh "mongodb://localhost:27017/biometric_verification" --eval "show collections"
 
 # Consultar os resultados de verificação
 mongosh "mongodb://localhost:27017/biometric_verification" --eval "db.verification_results.find().toArray()"
@@ -253,8 +262,11 @@ mongosh "mongodb://localhost:27017/biometric_verification" --eval "db.verificati
 **Windows:**
 
 ```cmd
-# Conectar ao MongoDB e listar as coleções
-mongosh "mongodb://localhost:27017/biometric_verification" --eval "db.getCollectionNames()"
+# Listar bancos de dados
+mongosh --eval "show dbs"
+
+# Listar as coleções
+mongosh "mongodb://localhost:27017/biometric_verification" --eval "show collections"
 
 # Consultar os resultados de verificação
 mongosh "mongodb://localhost:27017/biometric_verification" --eval "db.verification_results.find().toArray()"
